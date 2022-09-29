@@ -1,3 +1,5 @@
+Documentation:
+https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
 1] Take backup as snapshot.db
 ETCDCTL_API=3 etcdctl --endpoints 10.0.2.10:2379   --cert=/etc/kubernetes/pki/etcd/server.crt   --key=/etc/kubernetes/pki/etcd/server.key   --cacert=/etc/kubernetes/pki/etcd/ca.crt   snapshot save /tmp/etcd-snapshot.db
 2] Restore from backup to some location

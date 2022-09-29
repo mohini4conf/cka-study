@@ -1,0 +1,37 @@
+Documentation: https://v1-21.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+To Upgrade 1.19.0-00 to 1.24.0-00
+On Master
+==================================
+1] Check available patches
+apt update
+apt-cache madison kubeadm
+2] Upgrade one by one
+apt-mark unhold kubeadm && \
+apt-get update && apt-get install -y kubeadm=1.20.0-00 && \
+apt-mark hold kubeadm
+3] Check version
+kubeadm version
+4] 
+kubeadm upgrade plan
+5] 
+kubeadm upgrade apply v1.20.0
+6] 
+apt-get update && apt-get install -y kubelet=1.20.0-00 kubectl=1.20.0-00
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+On Worker
+==================================
+1] Check available patches
+apt update
+apt-cache madison kubeadm
+2] Upgrade one by one
+apt-mark unhold kubeadm && \
+apt-get update && apt-get install -y kubeadm=1.20.0-00 && \
+apt-mark hold kubeadm
+3] Check version
+kubeadm version
+4] 
+kubeadm upgrade plan
+5] 
+kubeadm upgrade node v1.20.0
